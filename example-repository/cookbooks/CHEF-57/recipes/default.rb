@@ -1,7 +1,8 @@
 #
-# Author:: Adam Jacob (<adam@opscode.com>)
-# Copyright:: Copyright (c) 2008 Opscode, Inc.
-# License:: Apache License, Version 2.0
+# Cookbook Name:: CHEF-57
+# Recipe:: default
+#
+# Copyright 2009, Example Com
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,21 +17,8 @@
 # limitations under the License.
 #
 
-require 'digest/sha2'
-
-class Chef
-  module Mixin
-    module Checksum
-
-      def checksum(file)
-        digest = Digest::SHA256.new
-        fh = ::File.open(file)
-        fh.each do |line|
-          digest.update(line)
-        end
-        digest.hexdigest
-      end
-      
-    end
-  end
+script "boo" do
+  user 'adam'
+  code "print 'I like cheese';"
+  interpreter "perl"
 end
